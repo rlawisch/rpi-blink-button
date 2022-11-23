@@ -26,7 +26,7 @@ def should_toggle_led() -> bool:
     return blinking and timediff_ms >= BLINK_PERIOD_MS / 2
 
 
-if __name__ == "__MAIN__":
+if __name__ == "__main__":
     gpio.setmode(gpio.BCM)
     gpio.setup(BUTTON_PIN, gpio.IN, pull_up_down=gpio.PUD_DOWN)
 
