@@ -6,6 +6,7 @@ This example extends the usual Raspberry Pi blink project to control the blinkin
 
 There are two GPIO pins involved (for the LED and the button), and they are configured via `LED_PIN` and `BUTTON_PIN` constants, which are given in [BCM pinout](https://pinout.xyz/pinout/).
 | Variable | BCM pin | BOARD pin |
+| -------- | ------- | --------- |
 | BUTTON_PIN | 22 | 15 |
 | LED_PIN | 23 | 16 |
 
