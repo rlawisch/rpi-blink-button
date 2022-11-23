@@ -29,6 +29,7 @@ def should_toggle_led() -> bool:
 if __name__ == "__main__":
     gpio.setmode(gpio.BCM)
     gpio.setup(BUTTON_PIN, gpio.IN, pull_up_down=gpio.PUD_DOWN)
+    gpio.setup(LED_PIN, gpio.OUT)
 
     blinking = True
     released_from_last_press = True
