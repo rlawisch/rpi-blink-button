@@ -26,6 +26,11 @@ def should_toggle_led() -> bool:
     return blinking and timediff_ms >= BLINK_PERIOD_MS / 2
 
 
+def set_led_state(state):
+    led_state = state
+    gpio.output(LED_PIN, led_state)
+
+
 if __name__ == "__main__":
     gpio.setmode(gpio.BCM)
     gpio.setup(BUTTON_PIN, gpio.IN, pull_up_down=gpio.PUD_DOWN)
@@ -40,17 +45,18 @@ if __name__ == "__main__":
                 if released_from_last_press:
                     blinking = not blinking
                     released_from_last_press = False
+                    if not blinking:
+                        set_led_state(gpio.LOW)
                 last_press_time = datetime.now()
             else:
                 released_from_last_press = True
 
         if should_toggle_led():
             if led_state == gpio.LOW:
-                led_state = gpio.HIGH
+                set_led_state(gpio.HIGH)
             else:
-                led_state = gpio.LOW
+                set_led_state(gpio.LOW)
 
-            gpio.output(LED_PIN, led_state)
             last_toggle_time = datetime.now()
 
 gpio.cleanup()
