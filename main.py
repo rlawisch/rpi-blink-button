@@ -44,14 +44,17 @@ if __name__ == "__main__":
             if is_button_pressed():
                 if released_from_last_press:
                     blinking = not blinking
+                    print(f"DEBUG: Changed blink status to {blinking}")
                     released_from_last_press = False
                     if not blinking:
                         set_led_state(gpio.LOW)
+                        print("DEBUG: Stopped blinking and turned LED off")
                 last_press_time = datetime.now()
             else:
                 released_from_last_press = True
 
         if should_toggle_led():
+            print("DEBUG: Entered led toggle function")
             if led_state == gpio.LOW:
                 set_led_state(gpio.HIGH)
             else:
