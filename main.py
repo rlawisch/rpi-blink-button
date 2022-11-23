@@ -50,6 +50,7 @@ if __name__ == "__MAIN__":
                 led_state = gpio.LOW
 
             gpio.output(LED_PIN, led_state)
+            last_toggle_time = datetime.now()
 
 gpio.cleanup()
 exit()
